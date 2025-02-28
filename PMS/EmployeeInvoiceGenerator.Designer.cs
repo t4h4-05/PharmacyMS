@@ -57,7 +57,7 @@
             // 
             lblTotalPrice.AutoSize = true;
             lblTotalPrice.Font = new Font("Segoe UI", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblTotalPrice.Location = new Point(498, 405);
+            lblTotalPrice.Location = new Point(6, 414);
             lblTotalPrice.Name = "lblTotalPrice";
             lblTotalPrice.RightToLeft = RightToLeft.Yes;
             lblTotalPrice.Size = new Size(127, 32);
@@ -69,9 +69,9 @@
             // listBoxInvoice
             // 
             listBoxInvoice.FormattingEnabled = true;
-            listBoxInvoice.Location = new Point(498, 12);
+            listBoxInvoice.Location = new Point(6, 17);
             listBoxInvoice.Name = "listBoxInvoice";
-            listBoxInvoice.Size = new Size(284, 379);
+            listBoxInvoice.Size = new Size(284, 394);
             listBoxInvoice.TabIndex = 34;
             listBoxInvoice.SelectedIndexChanged += listBoxInvoice_SelectedIndexChanged;
             // 
@@ -141,12 +141,13 @@
             // Add
             // 
             Add.BackColor = Color.FromArgb(192, 255, 255);
+            Add.BackgroundImage = Properties.Resources.Basic_Ui__144_;
+            Add.BackgroundImageLayout = ImageLayout.Stretch;
             Add.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            Add.Location = new Point(264, 275);
+            Add.Location = new Point(395, 251);
             Add.Name = "Add";
-            Add.Size = new Size(217, 23);
+            Add.Size = new Size(80, 80);
             Add.TabIndex = 27;
-            Add.Text = "Add";
             Add.UseVisualStyleBackColor = false;
             Add.Click += btnAddToInvoice_Click;
             // 
@@ -189,9 +190,9 @@
             // 
             // txtSearch
             // 
-            txtSearch.Location = new Point(6, 48);
+            txtSearch.Location = new Point(544, 28);
             txtSearch.Name = "txtSearch";
-            txtSearch.Size = new Size(240, 23);
+            txtSearch.Size = new Size(244, 23);
             txtSearch.TabIndex = 20;
             txtSearch.TextChanged += txtSearch_TextChanged;
             // 
@@ -203,10 +204,10 @@
             dataGridView1.AllowUserToResizeRows = false;
             dataGridView1.BackgroundColor = Color.White;
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Location = new Point(6, 77);
+            dataGridView1.Location = new Point(544, 62);
             dataGridView1.Name = "dataGridView1";
             dataGridView1.ReadOnly = true;
-            dataGridView1.Size = new Size(240, 361);
+            dataGridView1.Size = new Size(244, 245);
             dataGridView1.TabIndex = 19;
             dataGridView1.CellClick += dataGridView1_CellClick;
             dataGridView1.CellContentClick += dataGridView1_CellContentClick;
@@ -215,12 +216,13 @@
             // btnSave
             // 
             btnSave.BackColor = Color.FromArgb(192, 255, 255);
+            btnSave.BackgroundImage = Properties.Resources._1__7_;
+            btnSave.BackgroundImageLayout = ImageLayout.Stretch;
             btnSave.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnSave.Location = new Point(309, 337);
+            btnSave.Location = new Point(708, 313);
             btnSave.Name = "btnSave";
-            btnSave.Size = new Size(138, 33);
+            btnSave.Size = new Size(80, 80);
             btnSave.TabIndex = 36;
-            btnSave.Text = "PRINT";
             btnSave.UseVisualStyleBackColor = false;
             btnSave.Click += btnPrint_Click;
             // 
@@ -248,7 +250,7 @@
             lblWelcome.AutoSize = true;
             lblWelcome.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
             lblWelcome.ForeColor = SystemColors.ActiveCaptionText;
-            lblWelcome.Location = new Point(6, 12);
+            lblWelcome.Location = new Point(653, 9);
             lblWelcome.Name = "lblWelcome";
             lblWelcome.Size = new Size(64, 17);
             lblWelcome.TabIndex = 39;
@@ -258,11 +260,11 @@
             // 
             btnDel.BackColor = Color.FromArgb(192, 255, 255);
             btnDel.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnDel.Location = new Point(264, 304);
+            btnDel.Location = new Point(293, 384);
             btnDel.Name = "btnDel";
-            btnDel.Size = new Size(217, 27);
+            btnDel.Size = new Size(124, 27);
             btnDel.TabIndex = 40;
-            btnDel.Text = "Remove selected entry -->";
+            btnDel.Text = "Remove Selected";
             btnDel.UseVisualStyleBackColor = false;
             btnDel.Click += btnDel_Click;
             // 
@@ -273,7 +275,7 @@
             button2.ForeColor = Color.White;
             button2.Image = (Image)resources.GetObject("button2.Image");
             button2.ImageAlign = ContentAlignment.MiddleRight;
-            button2.Location = new Point(354, 408);
+            button2.Location = new Point(695, 404);
             button2.Name = "button2";
             button2.Size = new Size(93, 37);
             button2.TabIndex = 46;

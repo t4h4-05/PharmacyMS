@@ -68,6 +68,7 @@ namespace PMS
                 txtName.Text = row.Cells["Name"].Value.ToString();
                 txtType.Text = row.Cells["Type"].Value.ToString();
                 txtPrice.Text = row.Cells["Price"].Value.ToString();
+                txtQty.Text = "1";
             }
         }
 
