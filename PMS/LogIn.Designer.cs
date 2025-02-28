@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Login));
             textBox1 = new TextBox();
             nm = new Label();
             label2 = new Label();
@@ -39,7 +40,7 @@
             // 
             // textBox1
             // 
-            textBox1.Location = new Point(321, 131);
+            textBox1.Location = new Point(256, 112);
             textBox1.Name = "textBox1";
             textBox1.Size = new Size(237, 23);
             textBox1.TabIndex = 0;
@@ -48,10 +49,10 @@
             // nm
             // 
             nm.AutoSize = true;
-            nm.BackColor = Color.Transparent;
+            nm.BackColor = Color.FromArgb(233, 234, 236);
             nm.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold);
-            nm.ForeColor = SystemColors.ActiveCaptionText;
-            nm.Location = new Point(234, 137);
+            nm.ForeColor = Color.FromArgb(42, 48, 89);
+            nm.Location = new Point(169, 118);
             nm.Name = "nm";
             nm.Size = new Size(63, 17);
             nm.TabIndex = 1;
@@ -60,10 +61,10 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.BackColor = Color.Transparent;
+            label2.BackColor = Color.FromArgb(233, 234, 236);
             label2.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold);
-            label2.ForeColor = SystemColors.ActiveCaptionText;
-            label2.Location = new Point(234, 177);
+            label2.ForeColor = Color.FromArgb(42, 48, 89);
+            label2.Location = new Point(169, 158);
             label2.Name = "label2";
             label2.Size = new Size(85, 17);
             label2.TabIndex = 2;
@@ -71,17 +72,17 @@
             // 
             // textBox2
             // 
-            textBox2.Location = new Point(321, 171);
+            textBox2.Location = new Point(256, 152);
             textBox2.Name = "textBox2";
             textBox2.Size = new Size(237, 23);
             textBox2.TabIndex = 3;
             // 
             // SignIn
             // 
-            SignIn.BackColor = Color.White;
+            SignIn.BackColor = Color.FromArgb(56, 69, 156);
             SignIn.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            SignIn.ForeColor = Color.Black;
-            SignIn.Location = new Point(321, 245);
+            SignIn.ForeColor = Color.FromArgb(233, 234, 236);
+            SignIn.Location = new Point(219, 226);
             SignIn.Name = "SignIn";
             SignIn.Size = new Size(240, 50);
             SignIn.TabIndex = 5;
@@ -92,10 +93,10 @@
             // checkBox1
             // 
             checkBox1.AutoSize = true;
-            checkBox1.BackColor = Color.Transparent;
+            checkBox1.BackColor = Color.FromArgb(233, 234, 236);
             checkBox1.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            checkBox1.ForeColor = SystemColors.ActiveCaptionText;
-            checkBox1.Location = new Point(318, 200);
+            checkBox1.ForeColor = Color.FromArgb(42, 48, 89);
+            checkBox1.Location = new Point(253, 181);
             checkBox1.Name = "checkBox1";
             checkBox1.Size = new Size(82, 19);
             checkBox1.TabIndex = 6;
@@ -106,9 +107,9 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.BackColor = Color.Transparent;
+            label1.BackColor = Color.FromArgb(233, 234, 236);
             label1.Font = new Font("Segoe UI", 20.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label1.ForeColor = SystemColors.ActiveCaptionText;
+            label1.ForeColor = Color.FromArgb(42, 48, 89);
             label1.Location = new Point(109, 9);
             label1.Name = "label1";
             label1.Size = new Size(481, 37);
@@ -120,8 +121,8 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            BackColor = Color.DarkCyan;
-            BackgroundImage = Properties.Resources.wengang_zhai_BFB7ydn1_DI_unsplash;
+            BackColor = Color.White;
+            BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
             BackgroundImageLayout = ImageLayout.Stretch;
             ClientSize = new Size(684, 363);
             Controls.Add(label1);

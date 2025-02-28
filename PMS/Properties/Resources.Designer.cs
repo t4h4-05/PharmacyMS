@@ -73,6 +73,50 @@ namespace PMS.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap abstract_luxury_gradient_blue_background_smooth_dark_blue_with_black_vignette_studio_banner {
+            get {
+                object obj = ResourceManager.GetObject("abstract-luxury-gradient-blue-background-smooth-dark-blue-with-black-vignette-stu" +
+                        "dio-banner", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap abstract_luxury_gradient_blue_background_smooth_dark_blue_with_black_vignette_studio_banner1 {
+            get {
+                object obj = ResourceManager.GetObject("abstract-luxury-gradient-blue-background-smooth-dark-blue-with-black-vignette-stu" +
+                        "dio-banner1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap abstract_luxury_gradient_blue_background_smooth_dark_blue_with_black_vignette_studio_banner2 {
+            get {
+                object obj = ResourceManager.GetObject("abstract-luxury-gradient-blue-background-smooth-dark-blue-with-black-vignette-stu" +
+                        "dio-banner2", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap abstract_luxury_gradient_blue_background_smooth_dark_blue_with_black_vignette_studio_banner3 {
+            get {
+                object obj = ResourceManager.GetObject("abstract-luxury-gradient-blue-background-smooth-dark-blue-with-black-vignette-stu" +
+                        "dio-banner3", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Basic_Ui__144_ {
             get {
                 object obj = ResourceManager.GetObject("Basic_Ui_(144)", resourceCulture);
