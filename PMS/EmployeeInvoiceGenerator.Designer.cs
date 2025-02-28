@@ -42,15 +42,12 @@
             txtType = new TextBox();
             txtName = new TextBox();
             txtReg = new TextBox();
-            txtSearch = new TextBox();
-            dataGridView1 = new DataGridView();
             btnSave = new Button();
             lblQty = new Label();
             txtQty = new TextBox();
             lblWelcome = new Label();
             btnDel = new Button();
             button2 = new Button();
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             SuspendLayout();
             // 
             // lblTotalPrice
@@ -68,10 +65,11 @@
             // 
             // listBoxInvoice
             // 
+            listBoxInvoice.Font = new Font("MS Reference Sans Serif", 15.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
             listBoxInvoice.FormattingEnabled = true;
             listBoxInvoice.Location = new Point(6, 17);
             listBoxInvoice.Name = "listBoxInvoice";
-            listBoxInvoice.Size = new Size(284, 394);
+            listBoxInvoice.Size = new Size(516, 394);
             listBoxInvoice.TabIndex = 34;
             listBoxInvoice.SelectedIndexChanged += listBoxInvoice_SelectedIndexChanged;
             // 
@@ -80,7 +78,7 @@
             label5.AutoSize = true;
             label5.Font = new Font("Arial Rounded MT Bold", 9.75F);
             label5.ForeColor = Color.Black;
-            label5.Location = new Point(293, 225);
+            label5.Location = new Point(594, 184);
             label5.Name = "label5";
             label5.Size = new Size(72, 15);
             label5.TabIndex = 33;
@@ -88,7 +86,7 @@
             // 
             // txtDiscount
             // 
-            txtDiscount.Location = new Point(375, 222);
+            txtDiscount.Location = new Point(676, 181);
             txtDiscount.Name = "txtDiscount";
             txtDiscount.Size = new Size(100, 23);
             txtDiscount.TabIndex = 32;
@@ -99,7 +97,7 @@
             label4.AutoSize = true;
             label4.Font = new Font("Arial Rounded MT Bold", 9.75F);
             label4.ForeColor = Color.Black;
-            label4.Location = new Point(293, 167);
+            label4.Location = new Point(594, 126);
             label4.Name = "label4";
             label4.Size = new Size(49, 15);
             label4.TabIndex = 31;
@@ -110,7 +108,7 @@
             label3.AutoSize = true;
             label3.Font = new Font("Arial Rounded MT Bold", 9.75F);
             label3.ForeColor = Color.Black;
-            label3.Location = new Point(293, 138);
+            label3.Location = new Point(594, 97);
             label3.Name = "label3";
             label3.Size = new Size(45, 15);
             label3.TabIndex = 30;
@@ -121,7 +119,7 @@
             label2.AutoSize = true;
             label2.Font = new Font("Arial Rounded MT Bold", 9.75F);
             label2.ForeColor = Color.Black;
-            label2.Location = new Point(293, 112);
+            label2.Location = new Point(594, 71);
             label2.Name = "label2";
             label2.Size = new Size(52, 15);
             label2.TabIndex = 29;
@@ -132,7 +130,7 @@
             label1.AutoSize = true;
             label1.Font = new Font("Arial Rounded MT Bold", 9.75F);
             label1.ForeColor = Color.Black;
-            label1.Location = new Point(293, 80);
+            label1.Location = new Point(594, 39);
             label1.Name = "label1";
             label1.Size = new Size(49, 15);
             label1.TabIndex = 28;
@@ -144,7 +142,7 @@
             Add.BackgroundImage = Properties.Resources.Basic_Ui__144_;
             Add.BackgroundImageLayout = ImageLayout.Stretch;
             Add.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            Add.Location = new Point(395, 251);
+            Add.Location = new Point(695, 227);
             Add.Name = "Add";
             Add.Size = new Size(80, 80);
             Add.TabIndex = 27;
@@ -154,7 +152,7 @@
             // txtPrice
             // 
             txtPrice.BackColor = SystemColors.Window;
-            txtPrice.Location = new Point(375, 164);
+            txtPrice.Location = new Point(676, 123);
             txtPrice.Name = "txtPrice";
             txtPrice.ReadOnly = true;
             txtPrice.Size = new Size(100, 23);
@@ -163,7 +161,7 @@
             // txtType
             // 
             txtType.BackColor = SystemColors.Window;
-            txtType.Location = new Point(375, 135);
+            txtType.Location = new Point(676, 94);
             txtType.Name = "txtType";
             txtType.ReadOnly = true;
             txtType.Size = new Size(100, 23);
@@ -172,7 +170,7 @@
             // txtName
             // 
             txtName.BackColor = SystemColors.Window;
-            txtName.Location = new Point(375, 106);
+            txtName.Location = new Point(676, 65);
             txtName.Name = "txtName";
             txtName.ReadOnly = true;
             txtName.Size = new Size(100, 23);
@@ -181,37 +179,12 @@
             // txtReg
             // 
             txtReg.BackColor = SystemColors.Window;
-            txtReg.Location = new Point(375, 77);
+            txtReg.Location = new Point(676, 36);
             txtReg.Name = "txtReg";
             txtReg.ReadOnly = true;
             txtReg.Size = new Size(100, 23);
             txtReg.TabIndex = 23;
             txtReg.TextChanged += txtReg_TextChanged;
-            // 
-            // txtSearch
-            // 
-            txtSearch.Location = new Point(544, 28);
-            txtSearch.Name = "txtSearch";
-            txtSearch.Size = new Size(244, 23);
-            txtSearch.TabIndex = 20;
-            txtSearch.TextChanged += txtSearch_TextChanged;
-            // 
-            // dataGridView1
-            // 
-            dataGridView1.AllowUserToAddRows = false;
-            dataGridView1.AllowUserToDeleteRows = false;
-            dataGridView1.AllowUserToResizeColumns = false;
-            dataGridView1.AllowUserToResizeRows = false;
-            dataGridView1.BackgroundColor = Color.White;
-            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Location = new Point(544, 62);
-            dataGridView1.Name = "dataGridView1";
-            dataGridView1.ReadOnly = true;
-            dataGridView1.Size = new Size(244, 245);
-            dataGridView1.TabIndex = 19;
-            dataGridView1.CellClick += dataGridView1_CellClick;
-            dataGridView1.CellContentClick += dataGridView1_CellContentClick;
-            dataGridView1.KeyDown += dataGridView1_KeyDown;
             // 
             // btnSave
             // 
@@ -219,7 +192,7 @@
             btnSave.BackgroundImage = Properties.Resources._1__7_;
             btnSave.BackgroundImageLayout = ImageLayout.Stretch;
             btnSave.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnSave.Location = new Point(708, 313);
+            btnSave.Location = new Point(695, 318);
             btnSave.Name = "btnSave";
             btnSave.Size = new Size(80, 80);
             btnSave.TabIndex = 36;
@@ -231,7 +204,7 @@
             lblQty.AutoSize = true;
             lblQty.Font = new Font("Arial Rounded MT Bold", 9.75F);
             lblQty.ForeColor = Color.Black;
-            lblQty.Location = new Point(293, 196);
+            lblQty.Location = new Point(594, 155);
             lblQty.Name = "lblQty";
             lblQty.Size = new Size(69, 15);
             lblQty.TabIndex = 38;
@@ -239,7 +212,7 @@
             // 
             // txtQty
             // 
-            txtQty.Location = new Point(375, 193);
+            txtQty.Location = new Point(676, 152);
             txtQty.Name = "txtQty";
             txtQty.Size = new Size(100, 23);
             txtQty.TabIndex = 37;
@@ -260,9 +233,9 @@
             // 
             btnDel.BackColor = Color.FromArgb(192, 255, 255);
             btnDel.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnDel.Location = new Point(293, 384);
+            btnDel.Location = new Point(565, 404);
             btnDel.Name = "btnDel";
-            btnDel.Size = new Size(124, 27);
+            btnDel.Size = new Size(124, 37);
             btnDel.TabIndex = 40;
             btnDel.Text = "Remove Selected";
             btnDel.UseVisualStyleBackColor = false;
@@ -309,14 +282,11 @@
             Controls.Add(txtType);
             Controls.Add(txtName);
             Controls.Add(txtReg);
-            Controls.Add(txtSearch);
-            Controls.Add(dataGridView1);
             MaximizeBox = false;
             Name = "EmployeeInvoiceGenerator";
             Text = "EmployeeInvoiceGenerator";
             FormClosed += EmployeeInvoiceGenerator_FormClosed;
             Load += txtSearch_TextChanged;
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -338,8 +308,6 @@
         private TextBox txtReg;
         private Splitter splitter1;
         private Splitter splitter2;
-        private TextBox txtSearch;
-        private DataGridView dataGridView1;
         private Button btnSave;
         private Label lblQty;
         private TextBox txtQty;

@@ -17,6 +17,30 @@ namespace PMS
         {
             InitializeComponent();
             lblWelcome.Text = $"Welcome {VarStuff.name}";
+
+            // Make sure txtReg and txtName are editable
+            txtReg.ReadOnly = false;
+            txtName.ReadOnly = false;
+
+            // Wire up the TextChanged events
+            txtReg.TextChanged += txtReg_TextChanged;
+            txtName.TextChanged += txtName_TextChanged;
+
+            // Optional: Enable overwrite mode by default
+            txtReg.KeyPress += TextBox_KeyPress;
+            txtName.KeyPress += TextBox_KeyPress;
+        }
+
+        private void TextBox_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            TextBox textBox = (TextBox)sender;
+
+            // If there's selected text, pressing a key will overwrite it
+            if (textBox.SelectionLength > 0 && char.IsLetterOrDigit(e.KeyChar))
+            {
+                // Let the default behavior handle it (which will replace the selection)
+                return;
+            }
         }
         private string con = VarStuff.conString;
         private List<string> invoiceItems = new List<string>();
@@ -45,7 +69,7 @@ namespace PMS
 
                     DataTable dt = new DataTable();
                     da.Fill(dt);
-                    dataGridView1.DataSource = dt;
+                    //dataGridView1.DataSource = dt;
                 }
                 catch (Exception ex)
                 {
@@ -56,21 +80,21 @@ namespace PMS
 
         private void txtSearch_TextChanged(object sender, EventArgs e)
         {
-            LoadDrugsData(txtSearch.Text);
+            //LoadDrugsData(txtSearch.Text);
         }
 
-        private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
-            if (e.RowIndex >= 0)
-            {
-                DataGridViewRow row = dataGridView1.Rows[e.RowIndex];
-                txtReg.Text = row.Cells["Reg"].Value.ToString();
-                txtName.Text = row.Cells["Name"].Value.ToString();
-                txtType.Text = row.Cells["Type"].Value.ToString();
-                txtPrice.Text = row.Cells["Price"].Value.ToString();
-                txtQty.Text = "1";
-            }
-        }
+        //private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
+        //{
+        //    if (e.RowIndex >= 0)
+        //    {
+        //        //DataGridViewRow row = dataGridView1.Rows[e.RowIndex];
+        //        txtReg.Text = row.Cells["Reg"].Value.ToString();
+        //        txtName.Text = row.Cells["Name"].Value.ToString();
+        //        txtType.Text = row.Cells["Type"].Value.ToString();
+        //        txtPrice.Text = row.Cells["Price"].Value.ToString();
+        //        txtQty.Text = "1";
+        //    }
+        //}
 
         private void btnAddToInvoice_Click(object sender, EventArgs e)
         {
@@ -362,23 +386,152 @@ namespace PMS
             }
         }
 
-
-
-
-        private void dataGridView1_KeyDown(object sender, KeyEventArgs e)
+        private void txtReg_TextChanged(object sender, EventArgs e)
         {
-            if (e.KeyCode == Keys.Enter && dataGridView1.CurrentCell != null)
+            if (!string.IsNullOrWhiteSpace(txtReg.Text))
             {
-                // Prevent the default behavior of the Enter key
-                e.Handled = true;
+                // Save current cursor position
+                int cursorPosition = txtReg.SelectionStart;
 
-                // Trigger the CellClick event for the current cell
-                var rowIndex = dataGridView1.CurrentCell.RowIndex;
-                var colIndex = dataGridView1.CurrentCell.ColumnIndex;
+                AutocompleteFromDatabase("Reg", txtReg.Text);
 
-                dataGridView1_CellClick(this, new DataGridViewCellEventArgs(colIndex, rowIndex));
+                // Restore cursor position and set selection length for overwrite mode
+                if (txtReg.Text.Length > cursorPosition)
+                {
+                    txtReg.SelectionStart = cursorPosition;
+                    txtReg.SelectionLength = txtReg.Text.Length - cursorPosition;
+                }
+            }
+            else
+            {
+                ClearOtherFields("Reg");
             }
         }
+
+        private void txtName_TextChanged(object sender, EventArgs e)
+        {
+            if (!string.IsNullOrWhiteSpace(txtName.Text))
+            {
+                // Save current cursor position
+                int cursorPosition = txtName.SelectionStart;
+
+                AutocompleteFromDatabase("Name", txtName.Text);
+
+                // Restore cursor position and set selection length for overwrite mode
+                if (txtName.Text.Length > cursorPosition)
+                {
+                    txtName.SelectionStart = cursorPosition;
+                    txtName.SelectionLength = txtName.Text.Length - cursorPosition;
+                }
+            }
+            else
+            {
+                ClearOtherFields("Name");
+            }
+        }
+
+        private void AutocompleteFromDatabase(string fieldType, string value)
+        {
+            // Don't trigger nested autocomplete
+            txtReg.TextChanged -= txtReg_TextChanged;
+            txtName.TextChanged -= txtName_TextChanged;
+
+            using (SqlConnection con = new SqlConnection(VarStuff.conString))
+            {
+                try
+                {
+                    con.Open();
+                    string query = $"SELECT TOP 1 Reg, Name, Type, CPrice AS Price FROM Drugs WHERE {fieldType} LIKE @Search";
+                    SqlCommand cmd = new SqlCommand(query, con);
+                    cmd.Parameters.AddWithValue("@Search", $"{value}%");
+
+                    bool foundMatch = false;
+                    using (SqlDataReader reader = cmd.ExecuteReader())
+                    {
+                        if (reader.Read())
+                        {
+                            foundMatch = true;
+                            string oldRegText = txtReg.Text;
+                            string oldNameText = txtName.Text;
+
+                            // Update all fields except the one being typed in
+                            if (fieldType != "Reg") txtReg.Text = reader["Reg"].ToString();
+                            if (fieldType != "Name") txtName.Text = reader["Name"].ToString();
+                            txtType.Text = reader["Type"].ToString();
+                            txtPrice.Text = reader["Price"].ToString();
+                            txtQty.Text = "1"; // Default quantity
+
+                            // For the field being typed in, only update if it's a completion of what's already typed
+                            if (fieldType == "Reg" && reader["Reg"].ToString().StartsWith(oldRegText))
+                            {
+                                txtReg.Text = reader["Reg"].ToString();
+                            }
+
+                            if (fieldType == "Name" && reader["Name"].ToString().StartsWith(oldNameText))
+                            {
+                                txtName.Text = reader["Name"].ToString();
+                            }
+                        }
+                    }
+
+                    // If no match found, clear other fields
+                    if (!foundMatch)
+                    {
+                        ClearOtherFields(fieldType);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    // Optionally handle errors silently
+                }
+                finally
+                {
+                    // Re-attach the event handlers
+                    txtReg.TextChanged += txtReg_TextChanged;
+                    txtName.TextChanged += txtName_TextChanged;
+                }
+            }
+        }
+
+        private void ClearOtherFields(string exceptField)
+        {
+            // Don't trigger nested events
+            txtReg.TextChanged -= txtReg_TextChanged;
+            txtName.TextChanged -= txtName_TextChanged;
+
+            try
+            {
+                // Clear all fields except the one specified
+                if (exceptField != "Reg") txtReg.Text = "";
+                if (exceptField != "Name") txtName.Text = "";
+                txtType.Text = "";
+                txtPrice.Text = "";
+                txtQty.Text = "";
+                txtDiscount.Text = "";
+            }
+            finally
+            {
+                // Re-attach the event handlers
+                txtReg.TextChanged += txtReg_TextChanged;
+                txtName.TextChanged += txtName_TextChanged;
+            }
+        }
+
+
+        //private void dataGridView1_KeyDown(object sender, KeyEventArgs e)
+        //{
+        //    if (e.KeyCode == Keys.Enter && dataGridView1.CurrentCell != null)
+        //    {
+        //        // Prevent the default behavior of the Enter key
+        //        e.Handled = true;
+
+        //        // Trigger the CellClick event for the current cell
+        //        var rowIndex = dataGridView1.CurrentCell.RowIndex;
+        //        var colIndex = dataGridView1.CurrentCell.ColumnIndex;
+
+        //        dataGridView1_CellClick(this, new DataGridViewCellEventArgs(colIndex, rowIndex));
+        //    }
+        //}
 
         private void splitter1_SplitterMoved(object sender, SplitterEventArgs e)
         {
@@ -397,10 +550,10 @@ namespace PMS
 
         }
 
-        private void txtReg_TextChanged(object sender, EventArgs e)
-        {
+        //private void txtReg_TextChanged(object sender, EventArgs e)
+        //{
 
-        }
+        //}
 
         private void listBoxInvoice_SelectedIndexChanged(object sender, EventArgs e)
         {
