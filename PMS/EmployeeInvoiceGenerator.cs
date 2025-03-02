@@ -152,7 +152,7 @@ namespace PMS
                     //reduceStockCmd.Parameters.AddWithValue("@Name", txtName.Text);
                     //reduceStockCmd.ExecuteNonQuery();
 
-                    
+
                     string invoiceItem = $"{txtReg.Text} {txtName.Text} (Qty: {qty}, Price: Rs{totalItemPrice})";
                     invoiceItems.Add(invoiceItem);
 
@@ -577,6 +577,11 @@ namespace PMS
             Login log = new Login();
             log.Show();
             this.Hide();
+        }
+
+        private void lblWelcome_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
